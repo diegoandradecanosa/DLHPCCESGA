@@ -72,7 +72,7 @@ if __name__ == "__main__":
     model.compile(loss='categorical_crossentropy',
                   optimizer=K.optimizers.RMSprop(lr=2e-5),
                   metrics=['accuracy'])
-    history = model.fit(x_train, y_train, batch_size=32, epochs=3, verbose=1,
+    history = model.fit(x_train, y_train, batch_size=32, epochs=1, verbose=1,
                         validation_data=(x_test, y_test),
                         callbacks=[check_point])
     model.summary()
