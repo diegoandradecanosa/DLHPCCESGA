@@ -1,1 +1,1 @@
-../../../scripts/slurm/notebook.sh
+../../../curso_scripts/slurm/notebook.sh

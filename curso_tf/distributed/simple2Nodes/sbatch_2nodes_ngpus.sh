@@ -1,1 +1,1 @@
-../../../scripts/slurm/sbatch_2nodes_ngpus.sh
+../../../curso_scripts/slurm/sbatch_2nodes_ngpus.sh

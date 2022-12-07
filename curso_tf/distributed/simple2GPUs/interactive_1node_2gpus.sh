@@ -1,1 +1,1 @@
-../../../scripts/slurm/interactive_1node_2gpus.sh
+../../../curso_scripts/slurm/interactive_1node_2gpus.sh
