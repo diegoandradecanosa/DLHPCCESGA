@@ -1,0 +1,1 @@
+../../../scripts/slurm/interactive_1node_2gpus.sh

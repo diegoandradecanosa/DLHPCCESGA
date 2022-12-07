@@ -1,0 +1,3 @@
+
+pip install resnet
+pip install keras-resnet Keras-Applications

@@ -1,0 +1,1 @@
+../../../scripts/slurm/notebook.sh
