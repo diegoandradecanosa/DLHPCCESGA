@@ -1,1 +1,0 @@
-python -m trace -t simple2GPUs.py | grep simple2GPUs.py
