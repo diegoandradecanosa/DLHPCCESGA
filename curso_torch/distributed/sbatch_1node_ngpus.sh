@@ -1,0 +1,1 @@
+../../curso_scripts/slurm/sbatch_1node_ngpus.sh
