@@ -2,15 +2,13 @@
 #SBATCH -J jsimple       # Job name
 #SBATCH -o jsimple.o%j   # Name of stdout output file(%j expands to jobId)
 #SBATCH -e jsimple_job.o%j   # Name of stderr output file(%j expands to jobId)
-#SBATCH -N 2
+#SBATCH -N 1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus=2
-#SBATCH -c 16
+#SBATCH -c 32
 #SBATCH --mem=8G
 #SBATCH -t 00:59:00
 #SBATCH -p short --qos=short
-
-module load tensorflow
 
 
 echo SLURM_NTASKS: $SLURM_NTASKS
