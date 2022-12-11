@@ -1,1 +1,1 @@
-pip install pytorch-lightning  
+pip install fairscale  
