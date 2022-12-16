@@ -39,6 +39,7 @@ def set_tf_config(resolver, environment=None):
 
 resolver = SlurmClusterResolver()
 set_tf_config(resolver)
+print(resolver)
 strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy(cluster_resolver=resolver)
 
 #cluster_spec=tf.distribute.cluster_resolver.SlurmClusterResolver().cluster_spec()
@@ -99,7 +100,9 @@ with strategy.scope():
   resnet_model.summary()
 
 resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
-history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=10)
+#history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=10)
+tboard_callback = tf.keras.callbacks.TensorBoard(log_dir = './logs',histogram_freq = 1,profile_batch = '10,20')
+history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=10,callbacks = [tboard_callback])
 
 fig1 = plt.gcf()
 plt.plot(history.history['accuracy'])
