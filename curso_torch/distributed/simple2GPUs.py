@@ -138,20 +138,20 @@ def main():
 
 
 
-    prof = torch.profiler.profile(
-        activities=[torch.profiler.ProfilerActivity.CPU,torch.profiler.ProfilerActivity.CUDA,],  
-        schedule=torch.profiler.schedule(wait=1, warmup=1, active=3, repeat=2),
-        on_trace_ready=torch.profiler.tensorboard_trace_handler('./logs/torch'),
+   # prof = torch.profiler.profile(
+   #     activities=[torch.profiler.ProfilerActivity.CPU,torch.profiler.ProfilerActivity.CUDA,],  
+   #     schedule=torch.profiler.schedule(wait=1, warmup=1, active=3, repeat=2),
+   #     on_trace_ready=torch.profiler.tensorboard_trace_handler('./logs/torch'),
         #record_shapes=True,
         #with_stack=True
-        )
-    prof.start()
+   #     )
+   # prof.start()
     for epoch in range(1, args.epochs + 1):
         train(args, model, device, train_loader, optimizer, epoch)
         test(model, device, test_loader)
-#        scheduler.step()
-        prof.step()
-    prof.stop()        
+        scheduler.step()
+#        prof.step()
+   # prof.stop()        
 
     if args.save_model:
         torch.save(model.state_dict(), "mnist_cnn.pt")
