@@ -44,7 +44,7 @@ lustrepath=os.environ["LUSTRE"]
 data_dir = tf.keras.utils.get_file('flower_photos', dataset_url,cache_dir=lustrepath, untar=True)
 data_dir = pathlib.Path(data_dir)
 img_height,img_width=180,180
-batch_size=32
+batch_size=8
 
 
 # In[6]:
@@ -106,7 +106,7 @@ with strategy.scope():
     resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
 
 #history = resnet_model.fit(train_batches, validation_data=val_batches, epochs=10)
-tboard_callback = tf.keras.callbacks.TensorBoard(log_dir = './logs',histogram_freq = 1,profile_batch = '6,7')
+tboard_callback = tf.keras.callbacks.TensorBoard(log_dir = './logs',histogram_freq = 1,profile_batch = '200,220')
 history = resnet_model.fit(train_ds,validation_data=val_ds, epochs=10,callbacks = [tboard_callback])
 
 
