@@ -98,7 +98,7 @@ with strategy.scope():
     resnet_model.summary()    
     resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
 
-tboard_callback = tf.keras.callbacks.TensorBoard(log_dir = './logs',histogram_freq = 1,profile_batch = '500,520')
+tboard_callback = tf.keras.callbacks.TensorBoard(log_dir = './logs',histogram_freq = 1,profile_batch = '6,7')
 
 history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=10,callbacks = [tboard_callback])
 
