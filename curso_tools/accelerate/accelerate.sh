@@ -14,9 +14,12 @@ THEID=`echo -e $HOSTNAMES  | python3 -c "import sys;[sys.stdout.write(str(i)) fo
 echo THEID=$THEID
 
 module load miniconda3
-conda activate mytorch
-#source $LUSTRE/mytorch/bin/activate
+# conda activate myacc
+source $LUSTRE/mytorch/bin/activate
 export NCCL_DEBUG=INFO
 export PYTHONFAULTHANDLER=1
 #accelerate launch --multi_gpu --num_machines 2 --num_processes 2 --num_cpu_threads_per_process 32 accelerate_sample.py
-accelerate launch --num_processes $(( 1 * $COUNT_NODE )) --num_machines $COUNT_NODE --multi_gpu --mixed_precision fp16 --machine_rank $THEID --main_process_ip $MASTER_ADDR --main_process_port $MASTER_PORT accelerate_sample.py
+which accelerate
+accelerate launch --num_processes $(( 1 * $COUNT_NODE )) --num_machines $COUNT_NODE --multi_gpu --mixed_precision fp16 --machine_rank $THEID --main_process_ip $MASTER_ADDR --main_process_port $MASTER_PORT  accelerate_sample.py  --logging_dir logs
+
+echo "DONE¡"
