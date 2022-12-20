@@ -20,3 +20,4 @@ echo "MASTER_ADDR="$MASTER_ADDR
 
 srun ./mnist_classify_ddp.sh
 
+
