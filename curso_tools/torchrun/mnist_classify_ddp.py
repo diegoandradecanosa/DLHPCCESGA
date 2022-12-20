@@ -155,17 +155,17 @@ def main():
     optimizer = optim.Adadelta(ddp_model.parameters(), lr=args.lr)
 
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
-    prof = torch.profiler.profile(
-            schedule=torch.profiler.schedule(wait=1, warmup=1, active=3, repeat=2),
-            on_trace_ready=torch.profiler.tensorboard_trace_handler('./log/mnist'),
-            record_shapes=True,
-            with_stack=True)
-    prof.start()
+    #prof = torch.profiler.profile(
+    #        schedule=torch.profiler.schedule(wait=1, warmup=1, active=3, repeat=2),
+    #        on_trace_ready=torch.profiler.tensorboard_trace_handler('./log/mnist'),
+    #        record_shapes=True,
+    #        with_stack=True)
+    #prof.start()
     for epoch in range(1, args.epochs + 1):
         train(args, ddp_model, local_rank, train_loader, optimizer, epoch)
         if rank == 0: test(ddp_model, local_rank, test_loader)
         scheduler.step()
-    prof.stop()
+    #prof.stop()
 
     if args.save_model and rank == 0:
         torch.save(model.state_dict(), "mnist_cnn.pt")

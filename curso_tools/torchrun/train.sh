@@ -10,6 +10,7 @@ echo "SLURM_JOB_NUM_NODES $SLURM_JOB_NUM_NODES SLURM_PROCID $SLURM_PROCID SLURM_
 module load cuda
 export NCCL_DEBUG=INFO
 export NCCL_DEBUG_SUBSYS=ALL
+source $LUSTRE/mytorch/bin/activate
 which torchrun
 #export NCCL_IB_DISABLE=1
 #export NCCL_SOCKET_IFNAME=eth0
