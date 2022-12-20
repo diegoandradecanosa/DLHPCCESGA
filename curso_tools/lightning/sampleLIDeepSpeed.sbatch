@@ -10,7 +10,8 @@
 
 # activate conda env
 module load miniconda3
-source activate mytorch
+# source activate mytorch
+source $LUSTRE/mytorch/bin/activate
 
 # debugging flags (optional)
 export NCCL_DEBUG=INFO
@@ -23,6 +24,7 @@ export PYTHONFAULTHANDLER=1
 # module load NCCL/2.4.7-1-cuda.10.0
 
 # run script from above
-srun /mnt/netapp2/Store_uni/home/ulc/es/dac/conda/envs/mytorch/bin/python sampleLIDeepSpeed.py
+# srun /mnt/netapp2/Store_uni/home/ulc/es/dac/conda/envs/mytorch/bin/python sampleLIDeepSpeed.py
+srun $LUSTRE/mytorch/bin/python sampleLIDeepSpeed.py
 
 # Based on: https://pytorch-lightning.readthedocs.io/en/stable/clouds/cluster_advanced.html
