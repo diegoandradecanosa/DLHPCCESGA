@@ -7,9 +7,10 @@
 #SBATCH --gres=gpu:a100:2        # number of gpus per node
 #SBATCH --time=00:25:00          # total run time limit (HH:MM:SS)
 
-module load cuda miniconda3
+#module load cuda miniconda3
 #conda init zsh
-conda activate mytorch
+#conda activate mytorch
+source $LUSTRE/mytorch/bin/activate
 
 echo "SLURM_JOB_NUM_NODES $SLURM_JOB_NUM_NODES"
 echo "HOSTNAME $HOSTNAME"
