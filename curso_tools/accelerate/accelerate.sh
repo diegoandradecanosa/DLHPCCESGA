@@ -15,6 +15,7 @@ echo THEID=$THEID
 
 module load miniconda3
 conda activate mytorch
+#source $LUSTRE/mytorch/bin/activate
 export NCCL_DEBUG=INFO
 export PYTHONFAULTHANDLER=1
 #accelerate launch --multi_gpu --num_machines 2 --num_processes 2 --num_cpu_threads_per_process 32 accelerate_sample.py
